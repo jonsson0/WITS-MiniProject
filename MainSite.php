@@ -6,6 +6,5 @@
 </head>
 <body>
 
-HALLO
 </body>
 </html>

@@ -10,7 +10,6 @@ if (isset($_GET["login"])) {
     }
     else {
         echo "denne kombi af uid og password findes ikke - Prøv igen";
-        echo "pdsakpnsfpk";
     }
 }
 
