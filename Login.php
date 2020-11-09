@@ -2,6 +2,7 @@
 session_start();
 
 require_once '/home/mir/forum/forum.php';
+
 if (isset($_GET["login"])) {
 
     if(login(($_GET["uid"]),($_GET["password"]))){
