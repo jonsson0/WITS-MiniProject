@@ -1,13 +1,12 @@
 
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #4CAF50;
+    background: #b15c5c;
 }
 
 .topnav {
     overflow: hidden;
-    background-color: #333;
+    background-color: #69fa01;
 }
 
 .topnav a {
@@ -24,9 +23,11 @@ body {
     color: black;
 }
 
-.topnav a.active {
+.topnav a:active {
     background-color: #4CAF50;
     color: white;
 }
 
-hej
+.home .HomeButton, .profile .ProfileButton, .login .LoginButton, .about .AboutButton {
+    background-color: #EAB126;
+}
