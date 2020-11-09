@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="Stylesheet.css" href="mystyle.css">
+    <link rel="stylesheet" href="Stylesheet.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
