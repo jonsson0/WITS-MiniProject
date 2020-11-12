@@ -10,6 +10,8 @@ $loggedIn = $_SESSION['loggedIn'];
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="Stylesheet.css">
+
     <title>MainSite</title>
 </head>
 <body>
@@ -51,7 +53,14 @@ if ($loggedIn == true) {
                 $nameOfUser = $user['name'];
                 $dateOfPost = $post['date'];
 
-                echo "<tr class='Post'> <td class='PostTitle'>$postTitle</td> <td class='PostContent'>This is post number $postPID: $postContent</td> <td class='Poster'>Posted by: $nameOfUser</td> <td class='Date'>Posted on: $dateOfPost</td> </tr>";
+                // echoes the header part of a post
+                echo "<div class='PostHeader'> <tr class='Post'> <td class='PostTitle'>$postTitle</td> <td class='Poster'>Posted by: $nameOfUser</td> <td class='Date'>Posted on: $dateOfPost</td> </div>";
+
+                // echoes the body part of a post
+                echo "<div class='PostBody'> <td class='PostContent'>This is post number $postPID: $postContent</td> </div>";
+
+                // echoes the footer part of a post
+                echo "<div class='PostFooter'> <td>INSERT LIKE BUTTON</td> <td class='NumberOfLikes'>INSERT NUMBER OF LIKES</td> </tr> </div>";
             }
         }
         ?>

@@ -1,34 +1,43 @@
 
 body {
     margin: 0;
-    background: #b15c5c;
+    background: palevioletred;
 }
 
+.TableOfPosts td {
+    border-style: hidden;
+    border-color: lightgreen;
+}
 .topnav {
     overflow: hidden;
-    background-color: #ff0000;
+    background-color: lightpink;
+    border-style: hidden;
 }
 
 .topnav a {
+    border-style: solid;
+    border-color: white;
     float: left;
-    color: #f2f2f2;
+    color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 14px 50px;
     text-decoration: none;
     font-size: 17px;
 }
 
 .topnav a:hover {
-    background-color: #ddd;
+    background-color: blue;
+    border-color: black;
     color: black;
 }
 
 .topnav a:active {
-    background-color: #62ff00;
+    background-color: lawngreen;
     color: white;
 }
+
 .TableOfPosts td {
-    border-style: solid;
+
 }
 
 .home .HomeButton, .profile .ProfileButton, .login .LoginButton, .about .AboutButton {
