@@ -1,5 +1,5 @@
 <?php
-require_once 'TopNavBar.html';
+require_once 'TopNavBar.php';
 ?>
 
 <!DOCTYPE html>

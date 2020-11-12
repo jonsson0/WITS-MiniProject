@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once '/home/mir/forum/forum.php';
-require_once 'TopNavBar.html';
+require_once 'TopNavBar.php';
 
 $uid = $_GET['uid'];
 $password = $_GET['password'];
@@ -9,8 +9,8 @@ $password = $_GET['password'];
 if (isset($_GET['submit'])) {
     if (login($uid, $password)) {
         echo "du er nu logget på";
-        $_SESSION['loggedIn'] = true;
-        header("Location: MainSite.php");
+        $_SESSION['uid'] = $uid;
+        header("Location: MainSite.php?uid=$uid");
     } else {
         echo "login fejlede";
     }

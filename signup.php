@@ -2,7 +2,7 @@
 
 
 require_once '/home/mir/forum/forum.php';
-require_once 'TopNavBar.html';
+require_once 'TopNavBar.php';
 
 $uid= $_GET['uid'];
 $password= $_GET['password'];

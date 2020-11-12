@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-require_once 'TopNavBar.html';
+require_once 'TopNavBar.php';
 require_once '/home/mir/forum/forum.php';
-$loggedIn = $_SESSION['loggedIn'];
+$uid = $_SESSION['uid'];
 ?>
 
 <!DOCTYPE html>
@@ -16,8 +16,8 @@ $loggedIn = $_SESSION['loggedIn'];
 </head>
 <body>
 <?php
-if ($loggedIn == true) {
-    echo $_SESSION['loggedIn'];
+if (isset($uid)) {
+    echo $uid;
     echo "<br>";
     echo "we are logged in baby";
 
@@ -60,12 +60,21 @@ if ($loggedIn == true) {
                 echo "<div class='PostBody'> <td class='PostContent'>This is post number $postPID: $postContent</td> </div>";
 
                 // echoes the footer part of a post
-                echo "<div class='PostFooter'> <td>INSERT LIKE BUTTON</td> <td class='NumberOfLikes'>INSERT NUMBER OF LIKES</td> </tr> </div> </div>";
+                echo "<div class='PostFooter'><td class='NumberOfLikes'>INSET NUMBER OF LIKES</td> <td><button class='LikeButton' onclick='likePost()'>Like</td> <td class='NumberOfLikes'>INSERT NUMBER OF LIKES</td> </tr> </div> </div>";
+
             }
         }
         ?>
 
+
+
     </table>
 </div>
+<script>
+    function likePost() {
+
+    }
+
+</script>
 </body>
 </html>

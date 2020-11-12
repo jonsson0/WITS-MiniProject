@@ -8,13 +8,13 @@ body {
     border-style: hidden;
     border-color: lightgreen;
 }
-.topnav {
+.topNav {
     overflow: hidden;
     background-color: lightpink;
     border-style: hidden;
 }
 
-.topnav a {
+.topNav a {
     border-style: solid;
     border-color: white;
     float: left;
@@ -25,13 +25,13 @@ body {
     font-size: 17px;
 }
 
-.topnav a:hover {
+.topNav a:hover {
     background-color: blue;
     border-color: black;
     color: black;
 }
 
-.topnav a:active {
+.topNav a:active {
     background-color: lawngreen;
     color: white;
 }
