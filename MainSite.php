@@ -30,14 +30,15 @@ if (isset($uid)) {
     <table>
         <?php
         // get all the posts and save in a var
-        $arrayOfPosts = get_posts();
+        $arrayOfPIDs = get_posts();
         // get the number of elements in the array (number of posts and replys in total)
-        $numberOfPosts = count($arrayOfPosts);
 
-        // running through all the posts
-        for ($i = 1; $i < $numberOfPosts; $i++) {
+        // reversing the array so we get the newest posts first
+        $reversedArrayOfPIDs = array_reverse($arrayOfPIDs);
+        // for each of the elements in the array we do stuff with it
+        foreach ($reversedArrayOfPIDs as $PID) {
             // save number i post in a var
-            $post = get_post_by_pid($i);
+            $post = get_post_by_pid($PID);
 
 
             // if its a Main post (!= reply)
@@ -53,19 +54,19 @@ if (isset($uid)) {
                 $nameOfUser = $user['name'];
                 $dateOfPost = $post['date'];
 
-                // echoes the header part of a post
-                echo "<div class='Post'> <div class='PostHeader'> <tr> <td class='PostTitle'>$postTitle</td> <td class='Poster'>Posted by: $nameOfUser</td> <td class='Date'>Posted on: $dateOfPost</td> </div>";
+                if (isset($postTitle)) {
+                    // echoes the header part of a post
+                    echo "<div class='Post'> <div class='PostHeader'> <tr> <td class='PostTitle'>$postTitle</td> <td class='Poster'>Posted by: $nameOfUser</td> <td class='Date'>Posted on: $dateOfPost</td> </div>";
 
-                // echoes the body part of a post
-                echo "<div class='PostBody'> <td class='PostContent'>This is post number $postPID: $postContent</td> </div>";
+                    // echoes the body part of a post
+                    echo "<div class='PostBody'> <td class='PostContent'>This is post number $postPID: $postContent</td> </div>";
 
-                // echoes the footer part of a post
-                echo "<div class='PostFooter'><td class='NumberOfLikes'>INSET NUMBER OF LIKES</td> <td><button class='LikeButton' onclick='likePost()'>Like</td> <td class='NumberOfLikes'>INSERT NUMBER OF LIKES</td> </tr> </div> </div>";
-
+                    // echoes the footer part of a post
+                    echo "<div class='PostFooter'><td class='NumberOfLikes'>INSET NUMBER OF LIKES</td> <td><button class='LikeButton' onclick='likePost()'>Like</td> <td class='NumberOfLikes'>INSERT NUMBER OF LIKES</td> </tr> </div> </div>";
+                }
             }
         }
         ?>
-
 
 
     </table>

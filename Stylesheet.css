@@ -1,6 +1,6 @@
 
 body {
-    margin: 0;
+    margin-top: 50px;
     background: palevioletred;
 }
 
@@ -10,14 +10,17 @@ body {
 }
 .topNav {
     overflow: hidden;
+    float: left;
     background-color: lightpink;
     border-style: hidden;
+    position: fixed;
+    top: 0px;
 }
 
 .topNav a {
     border-style: solid;
     border-color: white;
-    float: left;
+    float: top;
     color: white;
     text-align: center;
     padding: 14px 50px;

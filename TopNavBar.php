@@ -2,7 +2,6 @@
 session_start();
 require_once '/home/mir/forum/forum.php';
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

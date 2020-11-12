@@ -8,10 +8,37 @@ require_once 'TopNavBar.php';
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="Stylesheet.css">
-
     <title>New Post</title>
 </head>
 <body>
+<div id='PostForm'>
+    <form method="get">
+        <table>
+            <tr>
+                <td><input type='text' id='TitleOfPost' placeholder='Title' name='title'></td>
+            </tr>
+            <tr>
+                <td><textarea id='ContentOfPost' name='content' placeholder='Type here'></textarea></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type='submit' value='Sumbit your post'>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<?php
+if (isset($_SESSION['uid'])) {
+    if (isset($_GET['title']) && isset($_GET['content'])) {
+        $title = $_GET['title'];
+        $content = $_GET['content'];
+        $test = add_post(0, $title, $content);
+        header("Location:MainSite.php");
+
+    }
+}
+?>
 
 </body>
 </html>
