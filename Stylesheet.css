@@ -6,7 +6,7 @@ body {
 
 .topnav {
     overflow: hidden;
-    background-color: #69fa01;
+    background-color: #ff0000;
 }
 
 .topnav a {
@@ -24,8 +24,11 @@ body {
 }
 
 .topnav a:active {
-    background-color: #4CAF50;
+    background-color: #62ff00;
     color: white;
+}
+.TableOfPosts td {
+    border-style: solid;
 }
 
 .home .HomeButton, .profile .ProfileButton, .login .LoginButton, .about .AboutButton {
