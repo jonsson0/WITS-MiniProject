@@ -54,13 +54,13 @@ if ($loggedIn == true) {
                 $dateOfPost = $post['date'];
 
                 // echoes the header part of a post
-                echo "<div class='PostHeader'> <tr class='Post'> <td class='PostTitle'>$postTitle</td> <td class='Poster'>Posted by: $nameOfUser</td> <td class='Date'>Posted on: $dateOfPost</td> </div>";
+                echo "<div class='Post'> <div class='PostHeader'> <tr> <td class='PostTitle'>$postTitle</td> <td class='Poster'>Posted by: $nameOfUser</td> <td class='Date'>Posted on: $dateOfPost</td> </div>";
 
                 // echoes the body part of a post
                 echo "<div class='PostBody'> <td class='PostContent'>This is post number $postPID: $postContent</td> </div>";
 
                 // echoes the footer part of a post
-                echo "<div class='PostFooter'> <td>INSERT LIKE BUTTON</td> <td class='NumberOfLikes'>INSERT NUMBER OF LIKES</td> </tr> </div>";
+                echo "<div class='PostFooter'> <td>INSERT LIKE BUTTON</td> <td class='NumberOfLikes'>INSERT NUMBER OF LIKES</td> </tr> </div> </div>";
             }
         }
         ?>

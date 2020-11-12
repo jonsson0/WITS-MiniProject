@@ -24,7 +24,9 @@ if (isset($_GET['submit'])) {
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Sign Up</title>
+      <link rel="stylesheet" href="Stylesheet.css">
+
+      <title>Sign Up</title>
   </head>
   <body>
     <h1>Sign up</h1>
