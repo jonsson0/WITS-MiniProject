@@ -8,7 +8,7 @@ $password= $_GET['password'];
 $name= $_GET['name'];
 if (isset($_GET['submit'])) {
   if (add_user($uid, $password, $name)) {
-    echo "det virker";
+      header("Location:login.php");
   }
 
   else {

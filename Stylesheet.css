@@ -5,8 +5,8 @@ body {
 }
 
 .TableOfPosts td {
-    border-style: hidden;
-    border-color: lightgreen;
+    border-style: solid;
+    border-color: black;
 }
 .topNav {
     overflow: hidden;

@@ -25,57 +25,55 @@ if (isset($uid)) {
     echo "Go to the login page to login";
 }
 ?>
-<br>
-<div class="TableOfPosts">
-    <table>
-        <?php
-        // get all the posts and save in a var
-        $arrayOfPIDs = get_posts();
-        // get the number of elements in the array (number of posts and replys in total)
+<?php
+echo "<div class='TableOfPosts'>";
+echo " <table>";
+// get all the posts and save in a var
+$arrayOfPIDs = get_posts();
+// get the number of elements in the array (number of posts and replys in total)
 
-        // reversing the array so we get the newest posts first
-        $reversedArrayOfPIDs = array_reverse($arrayOfPIDs);
-        // for each of the elements in the array we do stuff with it
-        foreach ($reversedArrayOfPIDs as $PID) {
-            // save number i post in a var
-            $post = get_post_by_pid($PID);
+// reversing the array so we get the newest posts first
+$reversedArrayOfPIDs = array_reverse($arrayOfPIDs);
+// for each of the elements in the array we do stuff with it
+foreach ($reversedArrayOfPIDs as $PID) {
+    // save each element in a var
+    $post = get_post_by_pid($PID);
 
 
-            // if its a Main post (!= reply)
-            if ($post['parent_pid'] == 0) {
-                // saved the main posts pid, title, content, uid
-                // and echoes out a new tr with td which is the text of the main post
-                $postPID = $post['pid'];
-                $postTitle = $post['title'];
-                $postContent = $post['content'];
-                $posterUID = $post['uid'];
-                // getting the name of the poster by using the UID
-                $user = get_user_by_uid($posterUID);
-                $nameOfUser = $user['name'];
-                $dateOfPost = $post['date'];
+    // if its a Main post (!= reply)
+    if ($post['parent_pid'] == 0) {
+        // saved the main posts pid, title, content, uid
+        // and echoes out a new tr with td which is the text of the main post
+        $PID = $post['pid'];
+        $postTitle = $post['title'];
+        $postContent = $post['content'];
+        $posterUID = $post['uid'];
+        // getting the name of the poster by using the UID
+        $user = get_user_by_uid($posterUID);
+        $nameOfUser = $user['name'];
+        $dateOfPost = $post['date'];
 
-                if (isset($postTitle)) {
-                    // echoes the header part of a post
-                    echo "<div class='Post'> <div class='PostHeader'> <tr> <td class='PostTitle'>$postTitle</td> <td class='Poster'>Posted by: $nameOfUser</td> <td class='Date'>Posted on: $dateOfPost</td> </div>";
+        // counting the UIDs that have likes the post
+        $numberOfLikes = count_likes_by_pid($PID);
 
-                    // echoes the body part of a post
-                    echo "<div class='PostBody'> <td class='PostContent'>This is post number $postPID: $postContent</td> </div>";
+        // counting number of comments:
+        $arrayOfComments = get_posts_by_parent_pid($PID);
+        $numberOfComments = count($arrayOfComments);
 
-                    // echoes the footer part of a post
-                    echo "<div class='PostFooter'><td class='NumberOfLikes'>INSET NUMBER OF LIKES</td> <td><button class='LikeButton' onclick='likePost()'>Like</td> <td class='NumberOfLikes'>INSERT NUMBER OF LIKES</td> </tr> </div> </div>";
-                }
-            }
+        if (isset($postTitle)) {
+            // echoes the header part of a post
+            echo " <div class='Post'> <div class='PostHeader'> <tr> <td class='PostTitle' ><a href='Post.php?pid=$PID'>$postTitle</a></td> <td class='Poster'>Posted by: $nameOfUser</td> <td class='Date'>Posted on: $dateOfPost</td> </div>";
+
+            // echoes the body part of a post
+            echo "<div class='PostBody'> <td class='PostContent'>Content: $postContent</td> </div>";
+
+            // echoes the footer part of a post
+            echo "<div class='PostFooter'><td class='Likes'>Number of likes: $numberOfLikes</td> <td class='Comments'>Number of Comments: $numberOfComments</td></tr> </div> </div>";
         }
-        ?>
-
-
-    </table>
-</div>
-<script>
-    function likePost() {
-
     }
-
-</script>
+}
+echo "</table>";
+echo "</div>";
+?>
 </body>
 </html>
