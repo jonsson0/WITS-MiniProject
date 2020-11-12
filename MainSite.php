@@ -1,8 +1,8 @@
 <?php
 session_start();
-
-require_once 'TopNavBar.php';
 require_once '/home/mir/forum/forum.php';
+require_once 'TopNavBar.php';
+
 $uid = $_SESSION['uid'];
 ?>
 

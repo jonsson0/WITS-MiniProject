@@ -1,6 +1,5 @@
 <?php
-
-
+session_start();
 require_once '/home/mir/forum/forum.php';
 require_once 'TopNavBar.php';
 

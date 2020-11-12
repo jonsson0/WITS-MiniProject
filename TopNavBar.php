@@ -2,6 +2,7 @@
 session_start();
 require_once '/home/mir/forum/forum.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +19,7 @@ if (!isset($_SESSION['uid'])) {
 }
 // if logged in echo new post
 if (isset($_SESSION['uid'])) {
-    echo "<a id='NewPost' href='NewPost.php'>new Post</a>";
+    echo "<a id='NewPost' href='NewPost.php'>New Post</a>";
     echo "<a id='LogOut' href='LogOut.php'>Log Out</a>";
 }
 echo "</div>";
