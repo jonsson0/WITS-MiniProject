@@ -29,7 +29,6 @@ if (isset($uid)) {
 unset($_SESSION['pid']);
 // get all the posts and save in a var
 $arrayOfPIDs = get_posts();
-// get the number of elements in the array (number of posts and replys in total)
 
 // reversing the array so we get the newest posts first
 $reversedArrayOfPIDs = array_reverse($arrayOfPIDs);
@@ -52,10 +51,11 @@ foreach ($reversedArrayOfPIDs as $PID) {
         $postTitle = $post['title'];
         $postContent = $post['content'];
         $posterUID = $post['uid'];
+        $dateOfPost = $post['date'];
+
         // getting the name of the poster by using the UID
         $user = get_user_by_uid($posterUID);
         $nameOfUser = $user['name'];
-        $dateOfPost = $post['date'];
 
         // counting the UIDs that have likes the post
         $numberOfLikes = count_likes_by_pid($PID);
@@ -78,12 +78,13 @@ foreach ($reversedArrayOfPIDs as $PID) {
             echo "</thead>";
 
             echo "<tbody>";
-            echo "<tr> <td class='PostTitle' ><a href='Post.php?pid=$PID'>$postTitle</a></td> <td class='Poster'>$nameOfUser</td> <td class='Date'>$dateOfPost</td>";
+            // echoes the head of the body of the post
+            echo "<tr><div class='PostHead'> <td class='PostTitle' ><a href='Post.php?pid=$PID'>$postTitle</a></td> <td class='Poster'>$nameOfUser</td> <td class='Date'>$dateOfPost</td></div>";
 
-            // echoes the body part of a post
+            // echoes the body of the body of the post
             echo "<div class='PostBody'> <td class='PostContent'>$postContent</td> </div>";
 
-            // echoes the footer part of a post
+            // echoes the footer of the body of the post
             echo "<div class='PostFooter'><td class='Likes'>$numberOfLikes</td> <td class='Comments'>$numberOfComments</td></tr> </div> </div>";
             echo "<tbody>";
         }
