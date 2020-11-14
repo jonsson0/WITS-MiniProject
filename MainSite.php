@@ -26,6 +26,7 @@ if (isset($uid)) {
 }
 ?>
 <?php
+unset($_SESSION['pid']);
 // get all the posts and save in a var
 $arrayOfPIDs = get_posts();
 // get the number of elements in the array (number of posts and replys in total)

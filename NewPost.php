@@ -33,10 +33,10 @@ if (isset($_SESSION['uid'])) {
     if (isset($_GET['title']) && isset($_GET['content'])) {
         $title = $_GET['title'];
         $content = $_GET['content'];
-        $test = add_post(0, $title, $content);
-        header("Location:MainSite.php");
-
+        $newPostID = add_post(0, $title, $content);
+        header("Location:Post.php?pid=$newPostID");
     }
+
 }
 ?>
 

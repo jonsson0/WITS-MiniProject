@@ -10,7 +10,12 @@ if (isset($_GET['submit'])) {
     if (login($uid, $password)) {
         echo "du er nu logget på";
         $_SESSION['uid'] = $uid;
-        header("Location: MainSite.php?uid=$uid");
+        if (isset($_SESSION['pid'])) {
+            $pid = $_SESSION['pid'];
+            header("Location:Post.php?pid=$pid");
+        } else {
+            header("Location: MainSite.php");
+        }
     } else {
         echo "login fejlede";
     }
