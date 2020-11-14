@@ -3,9 +3,19 @@ session_start();
 
 require_once '/home/mir/forum/forum.php';
 
+$pid = $_GET['pid'];
+
+$_SESSION['PIDOfPost'] = $_GET['pid'];
+
+$pidOfPost = $_SESSION['pid'];
+
+header("Location:Post.php?pid=$pidOfPost");
+
 logout();
 
-header("Location:MainSite.php");
+header("Location:Post.php?pid=");
+
+//header("Location:MainSite.php");
 
 ?>
 

@@ -2,10 +2,11 @@
 session_start();
 require_once '/home/mir/forum/forum.php';
 
-
 $pid = $_SESSION['PIDOfPost'];
-add_like($pid);
-echo "Post Has Been Liked";
+
+delete_like($pid);
+echo "Like from post has been removed";
+
 header("Location:Post.php?pid=$pid");
 
 ?>
@@ -14,7 +15,7 @@ header("Location:Post.php?pid=$pid");
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Like a Post</title>
+    <title>Delete post</title>
 </head>
 <body>
 
