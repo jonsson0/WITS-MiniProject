@@ -13,16 +13,12 @@ echo $oldTitle;
 echo "<br>";
 echo "Content: ";
 echo $oldContent;
-echo "<br>";
-echo "<br>";
-
-
 echo "<form method='get' action='EditPost.php?'>";
 echo "<table>";
-echo "<tr> <td>New title: <input name='newTitle' placeholder=$oldTitle required> </td> </tr> <br>";
+echo "<tr> <td>New title: <input name='newTitle' placeholder='Current title: $oldTitle' required> </td> </tr> <br>";
 echo "<tr> <td>New Content: <br>";
-echo "<textarea name='newContent' placeholder=$oldContent required></textarea> </td> </tr> <br>";
-echo "<button type='submit'>Done Editing</button>";
+echo "<textarea name='newContent' placeholder='Current content: $oldContent' required></textarea> </td> </tr> <br>";
+echo "<tr><td><button type='submit'>Done Editing</button></td></tr>";
 echo "</table>";
 echo "</form>";
 
