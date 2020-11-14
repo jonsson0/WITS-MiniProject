@@ -81,14 +81,15 @@ if (isset($_SESSION['uid'])) {
     echo "<a href='DeleteLike.php'>Remove Like</a>";
     echo "<br>";
 
-    echo "Comment: <br>";
+    // add comment:
+    echo "Comment on post: <br>";
     echo "<form method='post'>";
     echo "<tr><td><input name='commentTitle' required placeholder='Your title on comment'></td></tr> <br>";
     echo "<tr><td><textarea name='commentContent' required placeholder='Content of your comment'></textarea></td></tr> <br>";
     echo "<tr><td><button type='submit' name='addCommentButton'>Add your comment</button></td></tr>";
     echo "</form>";
     $commentTitle = $_POST['commentTitle'];
-    $commentContent = $_POST['commentComtent'];
+    $commentContent = $_POST['commentContent'];
     if (isset($_POST['addCommentButton'])) {
         add_post($_GET['pid'], $commentTitle, $commentContent);
     }
@@ -131,14 +132,14 @@ foreach (get_posts_by_parent_pid($PID) as $commentPID) {
         echo " <div class='Post'> <div class='PostHeader'>";
 
         if ($whatIsWhatInTable == false) {
-            echo "<tr> <td>Title:</td> <td>Posted by:</td> <td>Posted on:</td> <td>Content:</td> <td>Number of likes:</td> <td>Number of Comments:</td> </tr>";
+            echo "<tr> <th>Title:</th> <th>Posted by:</th> <th>Posted on:</th> <th>Content:</th> <th>Number of likes:</th> <th>Number of Comments:</th> </tr>";
             $whatIsWhatInTable = true;
         }
 
         echo "<tr> <td class='PostTitle' ><a href='Post.php?pid=$commentPID'>$postTitle</a></td> <td class='Poster'>$nameOfUser</td> <td class='Date'>$dateOfPost</td> </div>";
 
         // echoes the body part of a post
-        echo "<div class='PostBody'> <td class='PostContent'>Content: $postContent</td> </div>";
+        echo "<div class='PostBody'> <td class='PostContent'>$postContent</td> </div>";
 
         // echoes the footer part of a post
         echo "<div class='PostFooter'><td class='Likes'>$numberOfLikes</td> <td class='Comments'>$numberOfComments</td></tr> </div> </div>";
