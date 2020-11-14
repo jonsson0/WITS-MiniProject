@@ -48,18 +48,24 @@ echo "<br>";
 
 if (isset($_SESSION['uid'])) {
 
+    // if its your post you can;
     // edit post:
     if ($posterUID == $_SESSION['uid']) {
         $_SESSION['oldTitle'] = $postTitle;
         $_SESSION['oldContent'] = $postContent;
         echo "<form method='post' action='EditPost.php'> <button type='submit'>Edit Post</button>";
         echo "<br>";
+        echo "</form>";
+
+
+        // delete post:
+        echo "<form method='post'> <tr> <td><button name='deleteButton' type='submit'>Delete Post</button></td> </tr>";
+        if (isset($_POST['deleteButton'])) {
+            delete_post($_SESSION['pid']);
+            header("Location:MainSite.php");
+        }
+        echo "</form>";
     }
-
-    // delete post:
-
-    // add comment:
-
     // add or remove likes:
     echo "You can like or remove your like here:";
     $_SESSION['PIDOfPost'] = $PID;
@@ -75,7 +81,19 @@ if (isset($_SESSION['uid'])) {
     echo "<a href='DeleteLike.php'>Remove Like</a>";
     echo "<br>";
 
+    echo "Comment: <br>";
+    echo "<form method='post'>";
+    echo "<tr><td><input name='commentTitle' required placeholder='Your title on comment'></td></tr> <br>";
+    echo "<tr><td><textarea name='commentContent' required placeholder='Content of your comment'></textarea></td></tr> <br>";
+    echo "<tr><td><button type='submit' name='addCommentButton'>Add your comment</button></td></tr>";
+    echo "</form>";
+    $commentTitle = $_POST['commentTitle'];
+    $commentContent = $_POST['commentComtent'];
+    if (isset($_POST['addCommentButton'])) {
+        add_post($_GET['pid'], $commentTitle, $commentContent);
+    }
 }
+
 echo "<br>";
 echo "<br>";
 echo "<br>";
