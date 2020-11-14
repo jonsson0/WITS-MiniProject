@@ -48,7 +48,7 @@ echo "<br>";
 
 if (isset($_SESSION['uid'])) {
 
-    // if its your post you can;
+    // if its your post you can:
     // edit post:
     if ($posterUID == $_SESSION['uid']) {
         $_SESSION['oldTitle'] = $postTitle;
@@ -59,13 +59,13 @@ if (isset($_SESSION['uid'])) {
 
 
         // delete post:
-        echo "<form method='post'> <tr> <td><button name='deleteButton' type='submit'>Delete Post</button></td> </tr>";
+        echo "<form method='post'> <tr> <td><button name='deleteButton' type='submit'>Delete Post</button></td> </tr></form>";
         if (isset($_POST['deleteButton'])) {
             delete_post($_SESSION['pid']);
             header("Location:MainSite.php");
         }
-        echo "</form>";
     }
+
     // add or remove likes:
     echo "You can like or remove your like here:";
     $_SESSION['PIDOfPost'] = $PID;
@@ -97,8 +97,6 @@ if (isset($_SESSION['uid'])) {
 
 echo "<br>";
 echo "<br>";
-echo "<br>";
-echo "<br>";
 echo "Comments on this post: ";
 
 echo "<div class='TableOfPosts'>";
@@ -126,7 +124,6 @@ foreach (get_posts_by_parent_pid($PID) as $commentPID) {
     $numberOfComments = count($arrayOfComments);
 
     if (isset($postTitle)) {
-
 
         // echoes the header part of a post
         echo " <div class='Post'> <div class='PostHeader'>";
