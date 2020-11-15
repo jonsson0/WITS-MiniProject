@@ -27,11 +27,10 @@ $posterUID = $post['uid'];
 $user = get_user_by_uid($posterUID);
 $nameOfUser = $user['name'];
 
+// getting date
 $dateOfPost = $post['date'];
 
 $numberOfLikes = count_likes_by_pid($PID);
-
-echo "<h1></h1>";
 
 echo "<h1>$postTitle</h1>";
 echo "<h3>$postContent</h3>";
