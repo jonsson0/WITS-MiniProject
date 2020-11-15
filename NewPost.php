@@ -22,7 +22,7 @@ require_once 'TopNavBar.php';
             </tr>
             <tr>
                 <td>
-                    <input type='submit' value='Sumbit your post'>
+                    <input type='submit' value='Submit your post'>
                 </td>
             </tr>
         </table>

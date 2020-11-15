@@ -7,7 +7,6 @@ $pid = $_SESSION['PIDOfPost'];
 add_like($pid);
 echo "Post Has Been Liked";
 header("Location:Post.php?pid=$pid");
-
 ?>
 
 <!DOCTYPE html>

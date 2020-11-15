@@ -15,6 +15,7 @@ body {
 
 #WhatIsWhat th {
     position: sticky;
+    text-align: center;
     top: 20px;
     color: white;
     background-color: indigo;
@@ -52,6 +53,13 @@ body {
     color: white;
 }
 
-.TableOfPosts td {
+#TableOfMainPosts td {
+    padding: 12px 15px;
+}
 
+#TableOfMainPosts tbody tr td {
+    border-bottom: 4px solid #000000;
+}
+#TableOfMainPosts tbody tr td:nth-of-type(even) {
+    background-color: #858585;
 }

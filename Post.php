@@ -42,7 +42,7 @@ echo "Written by: $nameOfUser";
 echo "<br>";
 echo "Written on the $dateOfPost";
 echo "<br>";
-echo "Number of Likes: $numberOfLikes";
+echo "Number of Likes: <div id='numberOfLikes'>$numberOfLikes</div>";
 echo "<br>";
 echo "<br>";
 
@@ -70,15 +70,10 @@ if (isset($_SESSION['uid'])) {
     echo "You can like or remove your like here:";
     $_SESSION['PIDOfPost'] = $PID;
     echo "<br>";
-    echo "<a href='LikeAPost.php'>LIKE</a>";
+    echo "<button onclick='fLike()'>LIKE</button>";
 
-    foreach ($UIDsWhoHaveLiked as $UID) {
-        if ($UID == $_SESSION['uid']) {
-            echo " You have liked already";
-        }
-    }
     echo "<br>";
-    echo "<a href='DeleteLike.php'>Remove Like</a>";
+    echo "<button onclick='fUnlike()'>Remove Like</button>";
     echo "<br>";
 
     // add comment:
@@ -146,5 +141,44 @@ echo "</table>";
 echo "</div>";
 ?>
 
+<script>
+
+    function ajax(url, handle) {
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+            if (request.readyState == 4 && request.status == 200) {
+                handle(request.responseText);
+                request.responseText
+            }
+        }
+        request.open("GET", url, true);
+        request.send();
+    }
+
+    function update(text) {
+        if (text != document.getElementById('numberOfLikes').innerHTML) {
+            readTextFile();
+        }
+    }
+
+    function fLike() {
+        ajax("HandleLikeContent.php?like", update)
+    }
+    function fUnlike() {
+        ajax("HandleLikeContent.php?unlike", update)
+    }
+
+    function readTextFile() {
+        var request = new XMLHttpRequest();
+        request.open("GET", "SetterFile.txt", true);
+        request.onreadystatechange = function () {
+            if (request.readyState === 4) {
+                var textFromFile = request.responseText;
+                document.getElementById('numberOfLikes').innerHTML = textFromFile;
+            }
+        }
+        request.send();
+    }
+</script>
 </body>
 </html>
