@@ -10,8 +10,6 @@ if (isset($_SESSION['pid'])) {
 } else {
     header("Location: MainSite.php");
 }
-//header("Location:MainSite.php");
-
 ?>
 
 <!DOCTYPE html>

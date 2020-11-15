@@ -51,7 +51,7 @@ if (isset($_GET['submit'])) {
 
 <br>
 <div>
-    You dont have an account yet? <a href="signup.php"> Click here to make an account</a>
+    You dont have an account yet? <a href="signup.php">Click here to make an account</a>
 </div>
 </body>
 </html>
