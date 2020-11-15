@@ -31,19 +31,16 @@ $dateOfPost = $post['date'];
 
 $numberOfLikes = count_likes_by_pid($PID);
 
-$UIDsWhoHaveLiked = get_likes_by_pid($_GET['pid']);
+echo "<h1></h1>";
 
-
-echo "Title: $postTitle";
-echo "<br>";
-echo "Content: $postContent";
+echo "<h1>$postTitle</h1>";
+echo "<h3>$postContent</h3>";
 echo "<br>";
 echo "Written by: $nameOfUser";
 echo "<br>";
 echo "Written on the $dateOfPost";
 echo "<br>";
 echo "Number of Likes: <div id='numberOfLikes'>$numberOfLikes</div>";
-echo "<br>";
 echo "<br>";
 
 if (isset($_SESSION['uid'])) {
@@ -60,6 +57,7 @@ if (isset($_SESSION['uid'])) {
 
         // delete post:
         echo "<form method='post'> <tr> <td><button name='deleteButton' type='submit'>Delete Post</button></td> </tr></form>";
+        echo "<br>";
         if (isset($_POST['deleteButton'])) {
             delete_post($_SESSION['pid']);
             header("Location:MainSite.php");
@@ -75,6 +73,7 @@ if (isset($_SESSION['uid'])) {
     echo "<br>";
     echo "<button onclick='fUnlike()'>Remove Like</button>";
     echo "<br>";
+    echo "<br>";
 
     // add comment:
     echo "Comment on post: <br>";
@@ -86,7 +85,8 @@ if (isset($_SESSION['uid'])) {
     $commentTitle = $_POST['commentTitle'];
     $commentContent = $_POST['commentContent'];
     if (isset($_POST['addCommentButton'])) {
-        add_post($_GET['pid'], $commentTitle, $commentContent);
+        add_post($_SESSION['pid'], $commentTitle, $commentContent);
+        header("Location:Post.php?pid=$PID");
     }
 }
 
@@ -118,7 +118,7 @@ foreach (get_posts_by_parent_pid($PID) as $commentPID) {
     $arrayOfComments = get_posts_by_parent_pid($commentPID);
     $numberOfComments = count($arrayOfComments);
 
-    if (isset($postTitle)) {
+    if (!empty($postTitle) && !empty($postContent)) {
 
         // echoes the header part of a post
         echo " <div class='Post'> <div class='PostHeader'>";
@@ -164,6 +164,7 @@ echo "</div>";
     function fLike() {
         ajax("HandleLikeContent.php?like", update)
     }
+
     function fUnlike() {
         ajax("HandleLikeContent.php?unlike", update)
     }

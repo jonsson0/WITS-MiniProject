@@ -11,14 +11,16 @@ require_once 'TopNavBar.php';
     <title>New Post</title>
 </head>
 <body>
+<h1>Create a new post</h1>
 <div id='PostForm'>
     <form method="get">
         <table>
             <tr>
-                <td><input type='text' id='TitleOfPost' placeholder='Title' name='title'></td>
+
+                <td>Title: <input type='text' id='TitleOfPost' placeholder='Title' name='title' required></td>
             </tr>
             <tr>
-                <td><textarea id='ContentOfPost' name='content' placeholder='Type here'></textarea></td>
+                <td>Content: <br><textarea id='ContentOfPost' name='content' placeholder='Type here' required></textarea></td>
             </tr>
             <tr>
                 <td>

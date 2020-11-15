@@ -17,12 +17,14 @@ $uid = $_SESSION['uid'];
 <body>
 <?php
 if (isset($uid)) {
-    echo $uid;
-    echo "<br>";
-    echo "we are logged in baby";
+    $user = get_user_by_uid($uid);
+    $nameOfUser = $user['name'];
+    echo "<h1>Welcome $nameOfUser to our forum - made by Mads Jönsson og Sebastian Sundberg</h1>";
+    echo "<h3>Here is a list of all the posts on our forum <br> Click the title to go to the specific post</h3>";
 
 } else {
-    echo "Go to the login page to login";
+    echo "<h1>Welcome to our forum - made by Mads Jönsson og Sebastian Sundberg</h1> <br>";
+    echo "<h3>Go to the login page to login or sign up</h3>";
 }
 ?>
 <?php
@@ -64,7 +66,8 @@ foreach ($reversedArrayOfPIDs as $PID) {
         $arrayOfComments = get_posts_by_parent_pid($PID);
         $numberOfComments = count($arrayOfComments);
 
-        if (isset($postTitle)) {
+        // only show a post if they have a title and content
+        if (!empty($postTitle) && !empty($postContent)) {
             // echoes the header part of a post
 
             echo " <div class='Post'>";
